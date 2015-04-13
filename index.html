@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Phaser Slot Maschine</title>
+        <meta name=viewport content="width=800">
+        <script src="js/phaser.min.js"></script>
+        <script src="config.js"></script>
+        <script src="language.js"></script>
+        <script src="js/slots.js"></script>
+        <script src="js/money.js"></script>
+        <script src="js/buttons.js"></script>
+        <script src="js/messages.js"></script>
+    </head>
+    <body style="width:100%">
+    <script type="text/javascript">
+
+    window.onload = function() {
+        var moneyText;
+        var moneyBetText;
+        var moneyWinText;
+        var game = new Phaser.Game(800, 600, Phaser.CANVAS, '', { preload: preload, create: create });
+        var slots;
+        var buttons
+        var money;
+        var messages;
+        buttonsEnable = true;
+        function preload () {
+            messages = new Messages({
+                'game': game,
+                'gameLang': gameLang
+            });
+            messages.loadImage();
+
+            money = new Money({
+                'config': moneyConfig,
+                'messages': messages,
+                'wins': wins
+            });
+
+            slots = new Slot({
+                'game': game,
+                'wins': wins,
+                'money': money,
+                'messages': messages
+            });
+            slots.loadSprite();
+
+            buttons = new Buttons({
+                'game': game,
+                'messages':   messages,
+                'money': money,
+                'slots': slots
+            });
+            buttons.loadSprite();
+        }
+
+        function create () {
+
+            //messages
+            messages.init();
+
+            //money
+            money.init();
+
+            //buttons
+            buttons.init();
+
+            //slots
+            slots.init();
+        }
+    };
+
+    </script>
+    </body>
+</html>
