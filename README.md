@@ -16,4 +16,6 @@ At this game we have four main parts
 3. Controls - buttons /js/buttons.js
 4. Slots - slots actions /js/slots.js
 
-I made this four objects and separate it in files. It gives me much clear structure of a game
+I made this four objects and separate it in a files. It gives me much clear structure of a game
+
+live sample of a game is <a href="http://zptugrik.github.io/slotJs/">here</a>
